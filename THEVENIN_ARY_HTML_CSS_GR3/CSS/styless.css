@@ -1,0 +1,160 @@
+/* je ne savais pas que l'on pouvait faire plusieurs css du coup j'ai tout fait en un, avec des explications pour que ce soit un peu compréhensible */
+
+/* On remet tout à zéro pour bien commencer */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;          /* On rend le corps du texte sympa et lisible */
+    line-height: 1.6;
+}
+
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;                         /* Ajout de bandes colorées sur les côtés, pour que ça soit sobre */
+    height: 100%;
+    width: 20%;
+    background-color: #333;
+    z-index: -1;
+}
+
+body::before { left: 0; } /* Bande à gauche */
+body::after { right: 0; } /* Et une à droite */
+
+/* Styles généraux pour l'en-tête, la nav, le contenu principal et le pied de page */
+header, nav, main, footer {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    display: flex; 
+    flex-direction: column; /*  en colonne */
+    align-items: center; /* on centre les éléments */
+    animation: fadeIn 1s; /* Petite animation  pour faire apparaîte le contenu */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;                     /* On personnalise l'en-tête pour qu'elle ressorte */
+    border-radius: 5px 5px 0 0;
+    width: 100%; /* toute la largeur*/
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    background-color: #333;             /* Style de la barre de navigation pour qu'elle soit clean */
+    padding: 10px 0;
+    border-radius: 0 0 5px 5px;
+    width: 100%; /* toute la largeur */
+}
+
+nav ul li { margin: 0 20px; } /* Espacement entre les liens */
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover { color: #ff4500; } 
+
+main { 
+    margin-top: 20px; 
+    padding: 20px;                      /* Style du contenu principal pour une bonne mise en page */
+    width: 100%; /* toute la largfeur */
+}
+
+/* Pour que l'image de la page d'accueil soit centré et que'elle prenne l'espace requis'*/
+.homepage-image {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto; /* on centre l'image */
+}
+
+.character-container {
+    display: flex;                                                  /* Mise en page des perso sur la bio, pour que ce soit clair */
+    justify-content: center;
+    align-items: center; /* Alignement vertical  */
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.character-container .left, .character-container .right {
+    flex: 1;
+    margin: 10px;
+    text-align: center;
+}
+
+.character-container img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.character-container .character-name {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;                /* Imagerie - on veut que ça soit beau et organisé */
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.image-container img {
+    max-width: calc(33.33% - 20px);
+    margin-bottom: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+footer {
+    text-align: center;
+    background-color: #333;
+    color: #fff;
+    margin-top: 20px;
+    padding: 10px 0;
+    border-radius: 0 0 5px 5px;
+    width: 100%; /* toute la largeur*/
+}
+
+@media screen and (max-width: 768px) {
+    nav ul {
+        flex-direction: column; /* en en colonne  pour les petits écrans*/
+        align-items: center;  /*on centre les éléments*/
+    }
+
+    nav ul li { margin: 10px 0; }
+
+    main { padding: 10px; }
+
+    .image-container img { max-width: calc(50% - 10px); }
+
+    .character-container img { max-width: 100%; }
+    .character-container .character-name { text-align: center; }
+}
+
+
+
